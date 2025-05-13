@@ -1,0 +1,21 @@
+﻿@model Biblioteka.Models.User
+
+@{
+    ViewData["Title"] = "Szczegóły użytkownika";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h4>@Model.FirstName @Model.LastName</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Email</dt>
+        <dd class="col-sm-10">@Model.Email</dd>
+        <dt class="col-sm-2">Rola</dt>
+        <dd class="col-sm-10">@Model.Role</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.UserID" class="btn btn-warning">Edytuj</a>
+    <a asp-action="Index" class="btn btn-secondary">Powrót</a>
+</div>
