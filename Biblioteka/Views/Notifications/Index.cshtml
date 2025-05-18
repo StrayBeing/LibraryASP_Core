@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Biblioteka.Models.Notification>
+
+@{
+    ViewData["Title"] = "Powiadomienia";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Success"]</div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Utwórz nowe powiadomienie</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Użytkownik</th>
+            <th>Wiadomość</th>
+            <th>Data wysłania</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var notification in Model)
+        {
+            <tr>
+                <td>@(notification.User != null ? $"{notification.User.FirstName} {notification.User.LastName}" : "Brak użytkownika")</td>
+                <td>@notification.Message</td>
+                <td>@notification.SentDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@notification.NotificationID" class="btn btn-info btn-sm">Szczegóły</a>
+                    <a asp-action="Edit" asp-route-id="@notification.NotificationID" class="btn btn-warning btn-sm">Edytuj</a>
+                    <a asp-action="Delete" asp-route-id="@notification.NotificationID" class="btn btn-danger btn-sm">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</table>

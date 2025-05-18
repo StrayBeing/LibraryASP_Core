@@ -1,0 +1,105 @@
+﻿@model Biblioteka.Models.Notification
+
+@{
+    ViewData["Title"] = "Edytuj powiadomienie";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Success"]</div>
+}
+
+@if (!ViewContext.ModelState.IsValid)
+{
+    <div class="alert alert-warning" role="alert">
+        <strong>Błędy walidacji:</strong>
+        <ul>
+            @foreach (var error in ViewContext.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="NotificationID" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="UserID" class="control-label">Użytkownik</label>
+        <select asp-for="UserID" class="form-control" asp-items="ViewBag.UserID">
+            <option value="">Wybierz użytkownika</option>
+        </select>
+        <span asp-validation-for="UserID" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Message" class="control-label">Wiadomość</label>
+        <textarea asp-for="Message" class="form-control" rows="4" required></textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SentDate" class="control-label">Data wysłania</label>
+        <input asp-for="SentDate" class="form-control" type="date" value="@Model.SentDate.ToString("yyyy-MM-dd")" required />
+        <span asp-validation-for="SentDate" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-success">Zapisz</button>
+        <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("form").validate({
+                rules: {
+                    UserID: {
+                        required: true,
+                        min: 1
+                    },
+                    Message: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    SentDate: {
+                        required: true,
+                        dateISO: true
+                    }
+                },
+                messages: {
+                    UserID: {
+                        required: "Proszę wybrać użytkownika.",
+                        min: "Proszę wybrać prawidłowego użytkownika."
+                    },
+                    Message: {
+                        required: "Proszę podać wiadomość.",
+                        maxlength: "Wiadomość nie może przekraczać 255 znaków."
+                    },
+                    SentDate: {
+                        required: "Proszę podać datę wysłania.",
+                        dateISO: "Proszę podać prawidłową datę w formacie RRRR-MM-DD."
+                    }
+                }
+            });
+
+            $("form").on("submit", function (e) {
+                var sentDate = $("#SentDate").val();
+                console.log("Submitting form: " + $(this).serialize());
+                if (sentDate && !/^\d{4}-\d{2}-\d{2}$/.test(sentDate)) {
+                    alert("Proszę podać datę wysłania w formacie RRRR-MM-DD.");
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+}
