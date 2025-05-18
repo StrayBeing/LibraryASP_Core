@@ -1,0 +1,74 @@
+﻿@model Biblioteka.Models.Copy
+
+@{
+    ViewData["Title"] = "Dodaj egzemplarz";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Success"]</div>
+}
+
+@if (!ViewContext.ModelState.IsValid)
+{
+    <div class="alert alert-warning" role="alert">
+        <strong>Błędy walidacji:</strong>
+        <ul>
+            @foreach (var error in ViewContext.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+@if (ViewBag.BookID == null || !((List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>)ViewBag.BookID).Any())
+{
+    <div class="alert alert-danger" role="alert">
+        Brak dostępnych książek. Dodaj książkę przed utworzeniem egzemplarza.
+        <a asp-controller="Books" asp-action="Create" class="btn btn-primary btn-sm">Dodaj książkę</a>
+    </div>
+}
+else
+{
+    <form asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="BookID" class="control-label">Książka</label>
+            <select asp-for="BookID" class="form-control" asp-items="ViewBag.BookID"></select>
+            <span asp-validation-for="BookID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CatalogNumber" class="control-label"></label>
+            <input asp-for="CatalogNumber" class="form-control" />
+            <span asp-validation-for="CatalogNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Available" class="control-label"></label>
+            <input asp-for="Available" type="checkbox" class="form-check-input" />
+            <span asp-validation-for="Available" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-3">
+            <button type="submit" class="btn btn-success">Zapisz</button>
+            <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+        </div>
+    </form>
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("form").on("submit", function () {
+                console.log("Submitting form: " + $(this).serialize());
+            });
+        });
+    </script>
+}

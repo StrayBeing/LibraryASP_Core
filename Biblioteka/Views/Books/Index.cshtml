@@ -6,18 +6,28 @@
 
 <h2>@ViewData["Title"]</h2>
 
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Success"]</div>
+}
+
 <p>
-    <a asp-action="Create" class="btn btn-primary">Dodaj książkę</a>
+    <a asp-action="Create" class="btn btn-primary">Dodaj nową książkę</a>
 </p>
 
-<table class="table">
-    <thead>
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
         <tr>
             <th>Tytuł</th>
             <th>Autor</th>
             <th>ISBN</th>
             <th>Rok wydania</th>
-            <th></th>
+            <th>Kategorie</th>
+            <th>Akcje</th>
         </tr>
     </thead>
     <tbody>
@@ -28,12 +38,17 @@
                 <td>@item.Author</td>
                 <td>@item.ISBN</td>
                 <td>@item.YearPublished</td>
+                <td>@(item.BookCategories.Any() ? string.Join(", ", item.BookCategories.Select(bc => bc.Category.Name)) : "Brak kategorii")</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.BookID">Edytuj</a> |
-                    <a asp-action="Details" asp-route-id="@item.BookID">Szczegóły</a> |
-                    <a asp-action="Delete" asp-route-id="@item.BookID">Usuń</a>
+                    <a asp-action="Details" asp-route-id="@item.BookID" class="btn btn-info btn-sm">Szczegóły</a>
+                    <a asp-action="Edit" asp-route-id="@item.BookID" class="btn btn-warning btn-sm">Edytuj</a>
+                    <a asp-action="Delete" asp-route-id="@item.BookID" class="btn btn-danger btn-sm">Usuń</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}

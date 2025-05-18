@@ -1,77 +1,209 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Biblioteka.Data;
+﻿using Biblioteka.Data;
 using Biblioteka.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Biblioteka.Controllers
 {
     public class BooksController : Controller
     {
         private readonly LibraryContext _context;
+        private readonly ILogger<BooksController> _logger;
 
-        public BooksController(LibraryContext context)
+        public BooksController(LibraryContext context, ILogger<BooksController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
+        // GET: Books
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Books.ToListAsync());
+            try
+            {
+                var books = await _context.Books
+                    .Include(b => b.BookCategories)
+                    .ThenInclude(bc => bc.Category)
+                    .ToListAsync();
+                return View(books);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving books list");
+                TempData["Error"] = "Wystąpił błąd podczas pobierania listy książek.";
+                return View(new List<Book>());
+            }
         }
 
-        public IActionResult Create()
+        // GET: Books/Create
+        public async Task<IActionResult> Create()
         {
-            return View();
+            try
+            {
+                ViewBag.Categories = await _context.Categories.ToListAsync();
+                return View();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving categories for book creation");
+                TempData["Error"] = "Wystąpił błąd podczas przygotowywania formularza.";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
+        // POST: Books/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Book book)
+        public async Task<IActionResult> Create(Book book, List<int> CategoryIds)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(book);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(book);
+                    await _context.SaveChangesAsync();
+
+                    if (CategoryIds != null && CategoryIds.Any())
+                    {
+                        foreach (var categoryId in CategoryIds)
+                        {
+                            _context.BookCategories.Add(new BookCategory { BookID = book.BookID, CategoryID = categoryId });
+                        }
+                        await _context.SaveChangesAsync();
+                    }
+
+                    _logger.LogInformation("Book {BookTitle} created successfully", book.Title);
+                    TempData["Success"] = "Książka została dodana.";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error creating book {BookTitle}", book.Title);
+                    TempData["Error"] = "Wystąpił błąd podczas dodawania książki.";
+                }
             }
+            ViewBag.Categories = await _context.Categories.ToListAsync();
             return View(book);
         }
 
+        // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null) return NotFound();
+            if (id == null)
+            {
+                _logger.LogWarning("Edit book called with null ID");
+                return NotFound();
+            }
 
-            var book = await _context.Books.FindAsync(id);
-            if (book == null) return NotFound();
+            try
+            {
+                var book = await _context.Books
+                    .Include(b => b.BookCategories)
+                    .ThenInclude(bc => bc.Category)
+                    .FirstOrDefaultAsync(b => b.BookID == id);
+                if (book == null)
+                {
+                    _logger.LogWarning("Book with ID {BookId} not found", id);
+                    return NotFound();
+                }
 
-            return View(book);
+                ViewBag.Categories = await _context.Categories.ToListAsync();
+                ViewBag.SelectedCategoryIds = book.BookCategories.Select(bc => bc.CategoryID).ToList();
+                return View(book);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving book for edit, ID {BookId}", id);
+                TempData["Error"] = "Wystąpił błąd podczas pobierania książki do edycji.";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
+        // POST: Books/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Book book)
+        public async Task<IActionResult> Edit(int id, Book book, List<int> CategoryIds)
         {
-            if (id != book.BookID) return NotFound();
+            if (id != book.BookID)
+            {
+                _logger.LogWarning("Mismatched book ID {BookId} in edit", id);
+                return NotFound();
+            }
 
             if (ModelState.IsValid)
             {
-                _context.Update(book);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    var existingBook = await _context.Books
+                        .Include(b => b.BookCategories)
+                        .FirstOrDefaultAsync(b => b.BookID == id);
+                    if (existingBook == null)
+                    {
+                        _logger.LogWarning("Book with ID {BookId} not found", id);
+                        return NotFound();
+                    }
+
+                    _context.Entry(existingBook).CurrentValues.SetValues(book);
+
+                    // Update categories
+                    existingBook.BookCategories.Clear();
+                    if (CategoryIds != null && CategoryIds.Any())
+                    {
+                        foreach (var categoryId in CategoryIds)
+                        {
+                            existingBook.BookCategories.Add(new BookCategory { BookID = book.BookID, CategoryID = categoryId });
+                        }
+                    }
+
+                    await _context.SaveChangesAsync();
+                    _logger.LogInformation("Book {BookTitle} updated successfully", book.Title);
+                    TempData["Success"] = "Książka została zaktualizowana.";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error updating book {BookTitle}", book.Title);
+                    TempData["Error"] = "Wystąpił błąd podczas aktualizacji książki.";
+                }
             }
+            ViewBag.Categories = await _context.Categories.ToListAsync();
+            ViewBag.SelectedCategoryIds = CategoryIds ?? new List<int>();
             return View(book);
         }
 
         // GET: Books/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null) return NotFound();
+            if (id == null)
+            {
+                _logger.LogWarning("Delete book called with null ID");
+                return NotFound();
+            }
 
-            var book = await _context.Books
-                .FirstOrDefaultAsync(m => m.BookID == id);
-            if (book == null) return NotFound();
-
-            return View(book);
+            try
+            {
+                var book = await _context.Books
+                    .Include(b => b.BookCategories)
+                    .ThenInclude(bc => bc.Category)
+                    .FirstOrDefaultAsync(b => b.BookID == id);
+                if (book == null)
+                {
+                    _logger.LogWarning("Book with ID {BookId} not found", id);
+                    return NotFound();
+                }
+                return View(book);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving book for delete, ID {BookId}", id);
+                TempData["Error"] = "Wystąpił błąd podczas pobierania książki do usunięcia.";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         // POST: Books/Delete/5
@@ -79,26 +211,57 @@ namespace Biblioteka.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var book = await _context.Books.FindAsync(id);
-            if (book == null)
+            try
             {
+                var book = await _context.Books.FindAsync(id);
+                if (book == null)
+                {
+                    _logger.LogWarning("Book with ID {BookId} not found", id);
+                    return NotFound();
+                }
+
+                _context.Books.Remove(book);
+                await _context.SaveChangesAsync();
+                _logger.LogInformation("Book with ID {BookId} deleted successfully", id);
+                TempData["Success"] = "Książka została usunięta.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting book with ID {BookId}", id);
+                TempData["Error"] = "Wystąpił błąd podczas usuwania książki.";
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        // GET: Books/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                _logger.LogWarning("Details book called with null ID");
                 return NotFound();
             }
 
-            _context.Books.Remove(book);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null) return NotFound();
-
-            var book = await _context.Books
-                .FirstOrDefaultAsync(b => b.BookID == id);
-            if (book == null) return NotFound();
-
-            return View(book);
+            try
+            {
+                var book = await _context.Books
+                    .Include(b => b.BookCategories)
+                    .ThenInclude(bc => bc.Category)
+                    .FirstOrDefaultAsync(b => b.BookID == id);
+                if (book == null)
+                {
+                    _logger.LogWarning("Book with ID {BookId} not found", id);
+                    return NotFound();
+                }
+                return View(book);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving book details for ID {BookId}", id);
+                TempData["Error"] = "Wystąpił błąd podczas pobierania szczegółów książki.";
+                return RedirectToAction(nameof(Index));
+            }
         }
     }
 }

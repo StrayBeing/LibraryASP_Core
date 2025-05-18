@@ -88,3 +88,4 @@ D:\Testy\ASP Powtórki\Biblioteka\Biblioteka\obj\Debug\net8.0\refint\Biblioteka.
 D:\Testy\ASP Powtórki\Biblioteka\Biblioteka\obj\Debug\net8.0\Biblioteka.pdb
 D:\Testy\ASP Powtórki\Biblioteka\Biblioteka\obj\Debug\net8.0\Biblioteka.genruntimeconfig.cache
 D:\Testy\ASP Powtórki\Biblioteka\Biblioteka\obj\Debug\net8.0\ref\Biblioteka.dll
+D:\Testy\ASP Powtórki\Biblioteka\Biblioteka\obj\Debug\net8.0\Biblioteka.sourcelink.json

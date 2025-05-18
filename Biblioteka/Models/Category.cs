@@ -8,10 +8,9 @@ namespace Biblioteka.Models
         public int CategoryID { get; set; }
 
         [Required(ErrorMessage = "Nazwa kategorii jest wymagana.")]
-        [StringLength(100)]
+        [StringLength(100, ErrorMessage = "Nazwa kategorii nie może być dłuższa niż 100 znaków.")]
         public string Name { get; set; }
 
-        public ICollection<BookCategory> BookCategories { get; set; }
+        public ICollection<BookCategory> BookCategories { get; set; } = new List<BookCategory>();
     }
-
 }

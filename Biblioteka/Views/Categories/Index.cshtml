@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Biblioteka.Models.Category>
+
+@{
+    ViewData["Title"] = "Lista kategorii";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (TempData["Error"] != null)
+{
+        <div class="alert alert-danger" role="alert">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+        <div class="alert alert-success" role="alert">@TempData["Success"]</div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj nową kategorię</a>
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nazwa</th>
+            <th>Liczba książek</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.BookCategories.Count</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.CategoryID" class="btn btn-info btn-sm">Szczegóły</a>
+                        <a asp-action="Edit" asp-route-id="@item.CategoryID" class="btn btn-warning btn-sm">Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@item.CategoryID" class="btn btn-danger btn-sm">Usuń</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}

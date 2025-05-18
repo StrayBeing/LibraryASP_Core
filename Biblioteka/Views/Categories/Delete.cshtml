@@ -1,7 +1,7 @@
-﻿@model Biblioteka.Models.Book
+﻿@model Biblioteka.Models.Category
 
 @{
-    ViewData["Title"] = "Usuń książkę";
+    ViewData["Title"] = "Usuń kategorię";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -11,24 +11,20 @@
     <div class="alert alert-danger" role="alert">@TempData["Error"]</div>
 }
 
-<h3>Czy na pewno chcesz usunąć tę książkę?</h3>
+<h3>Czy na pewno chcesz usunąć tę kategorię?</h3>
 <div>
-    <h4>@Model.Title</h4>
+    <h4>@Model.Name</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">Autor</dt>
-        <dd class="col-sm-10">@Model.Author</dd>
-        <dt class="col-sm-2">ISBN</dt>
-        <dd class="col-sm-10">@Model.ISBN</dd>
-        <dt class="col-sm-2">Rok wydania</dt>
-        <dd class="col-sm-10">@Model.YearPublished</dd>
-        <dt class="col-sm-2">Kategorie</dt>
-        <dd class="col-sm-10">@(Model.BookCategories.Any() ? string.Join(", ", Model.BookCategories.Select(bc => bc.Category.Name)) : "Brak kategorii")</dd>
+        <dt class="col-sm-2">Nazwa</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+        <dt class="col-sm-2">Liczba książek</dt>
+        <dd class="col-sm-10">@Model.BookCategories.Count</dd>
     </dl>
 </div>
 
 <form asp-action="Delete" method="post">
-    <input type="hidden" asp-for="BookID" />
+    <input type="hidden" asp-for="CategoryID" />
     <button type="submit" class="btn btn-danger" onclick="return confirmDeletion()">Usuń</button>
     <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
 </form>

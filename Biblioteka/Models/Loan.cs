@@ -7,9 +7,11 @@ namespace Biblioteka.Models
     {
         public int LoanID { get; set; }
 
+        [Required(ErrorMessage = "Użytkownik jest wymagany.")]
         public int UserID { get; set; }
         public User User { get; set; }
 
+        [Required(ErrorMessage = "Egzemplarz jest wymagany.")]
         public int CopyID { get; set; }
         public Copy Copy { get; set; }
 
@@ -20,5 +22,4 @@ namespace Biblioteka.Models
 
         public DateTime? ReturnDate { get; set; }
     }
-
 }

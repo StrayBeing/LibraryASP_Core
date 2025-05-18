@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Biblioteka.Models.Copy>
+
+@{
+    ViewData["Title"] = "Lista egzemplarzy";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Success"]</div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj nowy egzemplarz</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CatalogNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Available)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CatalogNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Available)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CopyID" class="btn btn-sm btn-primary">Edytuj</a>
+                    <a asp-action="Details" asp-route-id="@item.CopyID" class="btn btn-sm btn-info">Szczegóły</a>
+                    <a asp-action="Delete" asp-route-id="@item.CopyID" class="btn btn-sm btn-danger">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

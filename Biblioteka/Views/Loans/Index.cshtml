@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Biblioteka.Models.Loan>
+
+@{
+    ViewData["Title"] = "Lista wypożyczeń";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Success"]</div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj nowe wypożyczenie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Copy.Book.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Copy.CatalogNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Copy.Book.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Copy.CatalogNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoanDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.LoanID" class="btn btn-sm btn-primary">Edytuj</a>
+                    <a asp-action="Details" asp-route-id="@item.LoanID" class="btn btn-sm btn-info">Szczegóły</a>
+                    <a asp-action="Delete" asp-route-id="@item.LoanID" class="btn btn-sm btn-danger">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
