@@ -54,7 +54,6 @@ namespace Biblioteka.Controllers
             {
                 try
                 {
-                    // Check for duplicate category name
                     if (await _context.Categories.AnyAsync(c => c.Name == category.Name))
                     {
                         ModelState.AddModelError("Name", "Kategoria o tej nazwie już istnieje.");
@@ -118,7 +117,6 @@ namespace Biblioteka.Controllers
             {
                 try
                 {
-                    // Check for duplicate category name (excluding the current category)
                     if (await _context.Categories.AnyAsync(c => c.Name == category.Name && c.CategoryID != id))
                     {
                         ModelState.AddModelError("Name", "Kategoria o tej nazwie już istnieje.");

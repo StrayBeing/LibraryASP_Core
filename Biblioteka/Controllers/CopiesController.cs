@@ -52,13 +52,11 @@ namespace Biblioteka.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Copy copy)
         {
-            // Log raw form data
             var formData = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
             _logger.LogInformation("Raw form data: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
             _logger.LogInformation("Otrzymano BookID: {BookID}, CatalogNumber: {CatalogNumber}, Available: {Available}",
                 copy.BookID, copy.CatalogNumber, copy.Available);
 
-            // Log ModelState errors
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.ToDictionary(
@@ -68,7 +66,6 @@ namespace Biblioteka.Controllers
                 _logger.LogWarning("ModelState errors: {Errors}", System.Text.Json.JsonSerializer.Serialize(errors));
             }
 
-            // Temporarily bypass ModelState validation to test saving
             try
             {
                 copy.CatalogNumber = copy.CatalogNumber?.Trim();
@@ -177,13 +174,13 @@ namespace Biblioteka.Controllers
                 return NotFound();
             }
 
-            // Log raw form data
+
             var formData = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
             _logger.LogInformation("Raw form data: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
             _logger.LogInformation("Otrzymano BookID: {BookID}, CatalogNumber: {CatalogNumber}, Available: {Available}",
                 copy.BookID, copy.CatalogNumber, copy.Available);
 
-            // Log ModelState errors
+
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.ToDictionary(
@@ -193,7 +190,6 @@ namespace Biblioteka.Controllers
                 _logger.LogWarning("ModelState errors: {Errors}", System.Text.Json.JsonSerializer.Serialize(errors));
             }
 
-            // Bypass ModelState validation
             try
             {
                 copy.CatalogNumber = copy.CatalogNumber?.Trim();

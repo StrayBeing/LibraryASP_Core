@@ -69,10 +69,10 @@ namespace Biblioteka.Controllers
 
             try
             {
-                // Remove navigation property validation
+
                 ModelState.Remove("User");
 
-                // Manual validation
+
                 if (notification.UserID <= 0)
                 {
                     ModelState.AddModelError("UserID", "Proszę wybrać użytkownika.");
@@ -177,10 +177,9 @@ namespace Biblioteka.Controllers
 
             try
             {
-                // Remove navigation property validation
+
                 ModelState.Remove("User");
 
-                // Manual validation
                 if (notification.UserID <= 0)
                 {
                     ModelState.AddModelError("UserID", "Proszę wybrać użytkownika.");

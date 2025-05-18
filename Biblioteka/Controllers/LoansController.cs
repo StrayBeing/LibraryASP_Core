@@ -235,7 +235,7 @@ namespace Biblioteka.Controllers
 
             try
             {
-                // Validate inputs
+
                 if (loan.UserID <= 0)
                 {
                     ModelState.AddModelError("UserID", "Proszę wybrać użytkownika.");
@@ -265,7 +265,7 @@ namespace Biblioteka.Controllers
                     ModelState.AddModelError("UserID", "Wybrany użytkownik nie istnieje.");
                 }
 
-                // Remove navigation property validation errors
+
                 ModelState.Remove("User");
                 ModelState.Remove("Copy");
 
@@ -292,7 +292,7 @@ namespace Biblioteka.Controllers
                     return View(loan);
                 }
 
-                // Load original loan
+
                 var originalLoan = await _context.Loans
                     .AsNoTracking()
                     .FirstOrDefaultAsync(l => l.LoanID == id);
@@ -302,7 +302,6 @@ namespace Biblioteka.Controllers
                     return NotFound();
                 }
 
-                // Update Copy.Available logic
                 if (originalLoan.CopyID != loan.CopyID && !loan.ReturnDate.HasValue)
                 {
                     var oldCopy = await _context.Copies.FindAsync(originalLoan.CopyID);
@@ -325,7 +324,6 @@ namespace Biblioteka.Controllers
                     _context.Update(newCopy);
                 }
 
-                // Update existing loan
                 var existingLoan = await _context.Loans.FindAsync(id);
                 if (existingLoan == null)
                 {
