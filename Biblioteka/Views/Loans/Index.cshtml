@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Biblioteka.Models.Loan>
 
 @{
-    ViewData["Title"] = "Lista wypożyczeń";
+    ViewData["Title"] = User.IsInRole("Klient") ? "Moje wypożyczenia" : "Lista wypożyczeń";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -15,15 +15,22 @@
     <div class="alert alert-success" role="alert">@TempData["Success"]</div>
 }
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Dodaj nowe wypożyczenie</a>
-</p>
+@if (User.IsInRole("Bibliotekarz") || User.IsInRole("Administrator"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Dodaj nowe wypożyczenie</a>
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.User.FirstName)
-            </th>
+            @if (User.IsInRole("Bibliotekarz") || User.IsInRole("Administrator"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.User.FirstName)
+                </th>
+            }
             <th>
                 @Html.DisplayNameFor(model => model.Copy.Book.Title)
             </th>
@@ -39,16 +46,19 @@
             <th>
                 @Html.DisplayNameFor(model => model.ReturnDate)
             </th>
-            <th></th>
+            <th></th> <!-- Added column for actions -->
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
-                </td>
+                @if (User.IsInRole("Bibliotekarz") || User.IsInRole("Administrator"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                    </td>
+                }
                 <td>
                     @Html.DisplayFor(modelItem => item.Copy.Book.Title)
                 </td>
@@ -65,9 +75,12 @@
                     @Html.DisplayFor(modelItem => item.ReturnDate)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.LoanID" class="btn btn-sm btn-primary">Edytuj</a>
+                    @if (User.IsInRole("Bibliotekarz") || User.IsInRole("Administrator"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.LoanID" class="btn btn-sm btn-primary">Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@item.LoanID" class="btn btn-sm btn-danger">Usuń</a>
+                    }
                     <a asp-action="Details" asp-route-id="@item.LoanID" class="btn btn-sm btn-info">Szczegóły</a>
-                    <a asp-action="Delete" asp-route-id="@item.LoanID" class="btn btn-sm btn-danger">Usuń</a>
                 </td>
             </tr>
         }

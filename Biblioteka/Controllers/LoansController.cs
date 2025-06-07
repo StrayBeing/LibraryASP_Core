@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Biblioteka.Controllers
 {
@@ -27,11 +28,26 @@ namespace Biblioteka.Controllers
         {
             try
             {
-                var loans = await _context.Loans
+                IQueryable<Loan> loansQuery = _context.Loans
                     .Include(l => l.User)
                     .Include(l => l.Copy)
-                    .ThenInclude(c => c.Book)
-                    .ToListAsync();
+                    .ThenInclude(c => c.Book);
+
+                // If the user is a Klient, only show their own loans
+                if (User.IsInRole("Klient"))
+                {
+                    var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                    if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+                    {
+                        _logger.LogWarning("Nie można uzyskać ID użytkownika dla Klienta");
+                        TempData["Error"] = "Błąd podczas pobierania danych użytkownika.";
+                        return View(new System.Collections.Generic.List<Loan>());
+                    }
+
+                    loansQuery = loansQuery.Where(l => l.UserID == userId);
+                }
+
+                var loans = await loansQuery.ToListAsync();
                 return View(loans);
             }
             catch (Exception ex)
@@ -86,7 +102,7 @@ namespace Biblioteka.Controllers
         public async Task<IActionResult> Create(Loan loan)
         {
             var formData = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
-            _logger.LogInformation("Raw form data: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
+            _logger.LogInformation("FormData: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
             _logger.LogInformation("Otrzymano UserID: {UserID}, CopyID: {CopyID}, DueDate: {DueDate}, ReturnDate: {ReturnDate}",
                 loan.UserID, loan.CopyID, loan.DueDate, loan.ReturnDate);
 
@@ -235,7 +251,7 @@ namespace Biblioteka.Controllers
             }
 
             var formData = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
-            _logger.LogInformation("Raw form data: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
+            _logger.LogInformation("FormData: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
             _logger.LogInformation("Otrzymano UserID: {UserID}, CopyID: {CopyID}, DueDate: {DueDate}, ReturnDate: {ReturnDate}",
                 loan.UserID, loan.CopyID, loan.DueDate.ToString("o"), loan.ReturnDate?.ToString("o"));
 
@@ -451,11 +467,24 @@ namespace Biblioteka.Controllers
                     .Include(l => l.Copy)
                     .ThenInclude(c => c.Book)
                     .FirstOrDefaultAsync(l => l.LoanID == id);
+
                 if (loan == null)
                 {
                     _logger.LogWarning("Wypożyczenie o ID {LoanID} nie zostało znalezione", id);
                     return NotFound();
                 }
+
+                // Restrict Klient users to their own loans
+                if (User.IsInRole("Klient"))
+                {
+                    var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                    if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId) || loan.UserID != userId)
+                    {
+                        _logger.LogWarning("Klient próbuje uzyskać dostęp do nie swojego wypożyczenia ID {LoanID}", id);
+                        return Forbid();
+                    }
+                }
+
                 return View(loan);
             }
             catch (Exception ex)

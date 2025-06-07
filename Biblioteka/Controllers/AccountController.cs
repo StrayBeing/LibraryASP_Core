@@ -32,7 +32,7 @@ namespace Biblioteka.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
-                    Role = "Klient" // Set role during user creation
+                    Role = "Administrator" // Set role during user creation
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);

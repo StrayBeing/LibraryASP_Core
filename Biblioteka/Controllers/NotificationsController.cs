@@ -8,6 +8,9 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
+using System.Text.Json;
+using System.Collections.Generic;
 
 namespace Biblioteka.Controllers
 {
@@ -36,7 +39,33 @@ namespace Biblioteka.Controllers
             {
                 _logger.LogError(ex, "Błąd podczas pobierania listy powiadomień");
                 TempData["Error"] = "Wystąpił błąd podczas pobierania listy powiadomień.";
-                return View(new System.Collections.Generic.List<Notification>());
+                return View(new List<Notification>());
+            }
+        }
+
+        public async Task<IActionResult> MyNotifications()
+        {
+            try
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (!int.TryParse(userIdClaim, out int userId))
+                {
+                    _logger.LogWarning("Nie można uzyskać ID użytkownika dla Klienta");
+                    TempData["Error"] = "Błąd podczas pobierania danych użytkownika.";
+                    return View(new List<Notification>());
+                }
+
+                var notifications = await _context.Notifications
+                    .Include(n => n.User)
+                    .Where(n => n.UserID == userId)
+                    .ToListAsync();
+                return View(notifications);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Błąd podczas pobierania powiadomień dla użytkownika");
+                TempData["Error"] = "Wystąpił błąd podczas pobierania powiadomień.";
+                return View(new List<Notification>());
             }
         }
 
@@ -45,18 +74,21 @@ namespace Biblioteka.Controllers
         {
             try
             {
-                ViewData["UserID"] = _context.Users
-                    .Select(u => new SelectListItem
+                ViewData["UserID"] = new SelectList(
+                    _context.Users.Select(u => new
                     {
-                        Value = u.UserID.ToString(),
+                        Value = u.UserID,
                         Text = $"{u.FirstName} {u.LastName}"
-                    }).ToList();
+                    }),
+                    "Value",
+                    "Text"
+                );
                 return View();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Błąd podczas przygotowywania formularza tworzenia powiadomienia");
-                TempData["Error"] = "Wystąpił błąd podczas przygotowywania formularza.";
+                TempData["Error"] = "Wystąpił błąd podczas przygotowania formularza.";
                 return RedirectToAction(nameof(Index));
             }
         }
@@ -67,7 +99,7 @@ namespace Biblioteka.Controllers
         public async Task<IActionResult> Create(Notification notification)
         {
             var formData = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
-            _logger.LogInformation("Raw form data: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
+            _logger.LogInformation("FormData: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
             _logger.LogInformation("Otrzymano UserID: {UserID}, Message: {Message}", notification.UserID, notification.Message);
 
             try
@@ -93,15 +125,18 @@ namespace Biblioteka.Controllers
                 {
                     var errors = ModelState.ToDictionary(
                         kvp => kvp.Key,
-                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToList()
                     );
-                    _logger.LogWarning("ModelState errors: {Errors}", System.Text.Json.JsonSerializer.Serialize(errors));
-                    ViewData["UserID"] = _context.Users
-                        .Select(u => new SelectListItem
+                    _logger.LogWarning("Errors: {Errors}", JsonSerializer.Serialize(errors));
+                    ViewData["UserID"] = new SelectList(
+                        _context.Users.Select(u => new
                         {
-                            Value = u.UserID.ToString(),
+                            Value = u.UserID,
                             Text = $"{u.FirstName} {u.LastName}"
-                        }).ToList();
+                        }),
+                        "Value",
+                        "Text"
+                    );
                     return View(notification);
                 }
 
@@ -115,23 +150,26 @@ namespace Biblioteka.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Błąd podczas tworzenia powiadomienia");
-                TempData["Error"] = "Wystąpił błąd podczas dodawania powiadomienia: " + ex.Message;
-                ViewData["UserID"] = _context.Users
-                    .Select(u => new SelectListItem
+                TempData["Error"] = "Wystąpił błąd podczas dodania powiadomienia: " + ex.Message;
+                ViewData["UserID"] = new SelectList(
+                    _context.Users.Select(u => new
                     {
-                        Value = u.UserID.ToString(),
+                        Value = u.UserID,
                         Text = $"{u.FirstName} {u.LastName}"
-                    }).ToList();
+                    }),
+                    "Value",
+                    "Text"
+                );
                 return View(notification);
             }
         }
 
         [Authorize(Roles = "Bibliotekarz,Administrator")]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
+            if (id <= 0)
             {
-                _logger.LogWarning("Edycja powiadomienia wywołana z pustym ID");
+                _logger.LogWarning("Edycja powiadomienia wywołana z pustym lub niepoprawnym ID {NotificationID}", id);
                 return NotFound();
             }
 
@@ -146,12 +184,16 @@ namespace Biblioteka.Controllers
                     return NotFound();
                 }
 
-                ViewData["UserID"] = _context.Users
-                    .Select(u => new SelectListItem
+                ViewData["UserID"] = new SelectList(
+                    _context.Users.Select(u => new
                     {
-                        Value = u.UserID.ToString(),
+                        Value = u.UserID,
                         Text = $"{u.FirstName} {u.LastName}"
-                    }).ToList();
+                    }),
+                    "Value",
+                    "Text",
+                    notification.UserID
+                );
                 return View(notification);
             }
             catch (Exception ex)
@@ -169,12 +211,12 @@ namespace Biblioteka.Controllers
         {
             if (id != notification.NotificationID)
             {
-                _logger.LogWarning("Niezgodność ID powiadomienia {NotificationID} w edycji", id);
+                _logger.LogError("Niezgodność ID powiadomienia {NotificationID} w edycji", id);
                 return NotFound();
             }
 
             var formData = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
-            _logger.LogInformation("Raw form data: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
+            _logger.LogInformation("FormData: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
             _logger.LogInformation("Otrzymano UserID: {UserID}, Message: {Message}, SentDate: {SentDate}",
                 notification.UserID, notification.Message, notification.SentDate.ToString("o"));
 
@@ -192,7 +234,7 @@ namespace Biblioteka.Controllers
                 }
                 if (notification.SentDate == default || notification.SentDate.Year < 1753)
                 {
-                    ModelState.AddModelError("SentDate", "Data wysłania jest nieprawidłowa (musi być po 1753 roku).");
+                    ModelState.AddModelError("SentDate", "Data wysyłania jest nieprawidłowa (musi być po 1753 roku).");
                 }
 
                 var user = await _context.Users.FindAsync(notification.UserID);
@@ -205,19 +247,22 @@ namespace Biblioteka.Controllers
                 {
                     var errors = ModelState.ToDictionary(
                         kvp => kvp.Key,
-                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToList()
                     );
-                    _logger.LogWarning("ModelState errors: {Errors}", System.Text.Json.JsonSerializer.Serialize(errors));
-                    ViewData["UserID"] = _context.Users
-                        .Select(u => new SelectListItem
+                    _logger.LogWarning("Errors: {Errors}", JsonSerializer.Serialize(errors));
+                    ViewData["UserID"] = new SelectList(
+                        _context.Users.Select(u => new
                         {
-                            Value = u.UserID.ToString(),
+                            Value = u.UserID,
                             Text = $"{u.FirstName} {u.LastName}"
-                        }).ToList();
+                        }),
+                        "Value",
+                        "Text",
+                        notification.UserID
+                    );
                     return View(notification);
                 }
 
-                // Update existing notification
                 var existingNotification = await _context.Notifications.FindAsync(id);
                 if (existingNotification == null)
                 {
@@ -236,15 +281,18 @@ namespace Biblioteka.Controllers
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError(ex, "Błąd podczas aktualizacji powiadomienia {NotificationID}. Inner exception: {InnerException}",
-                    notification.NotificationID, ex.InnerException?.Message);
+                _logger.LogError(ex, "Błąd podczas aktualizacji powiadomienia {NotificationID}. Inner exception: {InnerException}", id, ex.InnerException?.Message);
                 TempData["Error"] = "Wystąpił błąd podczas aktualizacji powiadomienia: " + (ex.InnerException?.Message ?? ex.Message);
-                ViewData["UserID"] = _context.Users
-                    .Select(u => new SelectListItem
+                ViewData["UserID"] = new SelectList(
+                    _context.Users.Select(u => new
                     {
-                        Value = u.UserID.ToString(),
+                        Value = u.UserID,
                         Text = $"{u.FirstName} {u.LastName}"
-                    }).ToList();
+                    }),
+                    "Value",
+                    "Text",
+                    notification.UserID
+                );
                 return View(notification);
             }
         }
@@ -324,6 +372,18 @@ namespace Biblioteka.Controllers
                     _logger.LogWarning("Powiadomienie o ID {NotificationID} nie zostało znalezione", id);
                     return NotFound();
                 }
+
+                // Restrict Klient users to their own notifications
+                if (User.IsInRole("Klient"))
+                {
+                    var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                    if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId) || notification.UserID != userId)
+                    {
+                        _logger.LogWarning("Klient próbuje uzyskać dostęp do nie swojego powiadomienia ID {NotificationID}", id);
+                        return Forbid();
+                    }
+                }
+
                 return View(notification);
             }
             catch (Exception ex)
