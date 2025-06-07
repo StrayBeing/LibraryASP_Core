@@ -7,9 +7,11 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Biblioteka.Controllers
 {
+    [Authorize]
     public class LoansController : Controller
     {
         private readonly LibraryContext _context;
@@ -40,6 +42,7 @@ namespace Biblioteka.Controllers
             }
         }
 
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public IActionResult Create()
         {
             try
@@ -79,6 +82,7 @@ namespace Biblioteka.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Create(Loan loan)
         {
             var formData = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
@@ -174,6 +178,7 @@ namespace Biblioteka.Controllers
             }
         }
 
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -220,6 +225,7 @@ namespace Biblioteka.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Edit(int id, Loan loan)
         {
             if (id != loan.LoanID)
@@ -235,7 +241,6 @@ namespace Biblioteka.Controllers
 
             try
             {
-
                 if (loan.UserID <= 0)
                 {
                     ModelState.AddModelError("UserID", "Proszę wybrać użytkownika.");
@@ -265,7 +270,6 @@ namespace Biblioteka.Controllers
                     ModelState.AddModelError("UserID", "Wybrany użytkownik nie istnieje.");
                 }
 
-
                 ModelState.Remove("User");
                 ModelState.Remove("Copy");
 
@@ -291,7 +295,6 @@ namespace Biblioteka.Controllers
                         }).ToList();
                     return View(loan);
                 }
-
 
                 var originalLoan = await _context.Loans
                     .AsNoTracking()
@@ -362,6 +365,7 @@ namespace Biblioteka.Controllers
             }
         }
 
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -394,6 +398,7 @@ namespace Biblioteka.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try

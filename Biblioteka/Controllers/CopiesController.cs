@@ -1,5 +1,6 @@
 ﻿using Biblioteka.Data;
 using Biblioteka.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteka.Controllers
 {
+    [Authorize]
     public class CopiesController : Controller
     {
         private readonly LibraryContext _context;
@@ -20,6 +22,7 @@ namespace Biblioteka.Controllers
             _logger = logger;
         }
 
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Create()
         {
             try
@@ -50,6 +53,7 @@ namespace Biblioteka.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Create(Copy copy)
         {
             var formData = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
@@ -106,6 +110,7 @@ namespace Biblioteka.Controllers
             return View(copy);
         }
 
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public IActionResult TestCreate()
         {
             return View();
@@ -129,6 +134,7 @@ namespace Biblioteka.Controllers
             }
         }
 
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -166,6 +172,7 @@ namespace Biblioteka.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Edit(int id, Copy copy)
         {
             if (id != copy.CopyID)
@@ -174,12 +181,10 @@ namespace Biblioteka.Controllers
                 return NotFound();
             }
 
-
             var formData = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
             _logger.LogInformation("Raw form data: {FormData}", string.Join(", ", formData.Select(kv => $"{kv.Key}: {kv.Value}")));
             _logger.LogInformation("Otrzymano BookID: {BookID}, CatalogNumber: {CatalogNumber}, Available: {Available}",
                 copy.BookID, copy.CatalogNumber, copy.Available);
-
 
             if (!ModelState.IsValid)
             {
@@ -230,6 +235,7 @@ namespace Biblioteka.Controllers
             return View(copy);
         }
 
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -261,6 +267,7 @@ namespace Biblioteka.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try

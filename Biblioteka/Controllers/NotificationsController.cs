@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Biblioteka.Controllers
 {
+    [Authorize]
     public class NotificationsController : Controller
     {
         private readonly LibraryContext _context;
@@ -39,6 +40,7 @@ namespace Biblioteka.Controllers
             }
         }
 
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public IActionResult Create()
         {
             try
@@ -61,6 +63,7 @@ namespace Biblioteka.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Create(Notification notification)
         {
             var formData = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
@@ -69,9 +72,7 @@ namespace Biblioteka.Controllers
 
             try
             {
-
                 ModelState.Remove("User");
-
 
                 if (notification.UserID <= 0)
                 {
@@ -125,6 +126,7 @@ namespace Biblioteka.Controllers
             }
         }
 
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -162,6 +164,7 @@ namespace Biblioteka.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Edit(int id, Notification notification)
         {
             if (id != notification.NotificationID)
@@ -177,7 +180,6 @@ namespace Biblioteka.Controllers
 
             try
             {
-
                 ModelState.Remove("User");
 
                 if (notification.UserID <= 0)
@@ -247,6 +249,7 @@ namespace Biblioteka.Controllers
             }
         }
 
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -277,6 +280,7 @@ namespace Biblioteka.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try

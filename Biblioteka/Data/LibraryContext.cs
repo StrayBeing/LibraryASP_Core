@@ -5,7 +5,7 @@ namespace Biblioteka.Data
 {
     public class LibraryContext : DbContext
     {
-        public LibraryContext(DbContextOptions options) : base(options) { }
+        public LibraryContext(DbContextOptions<LibraryContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -55,5 +55,4 @@ namespace Biblioteka.Data
                 .IsRequired(false);
         }
     }
-
 }

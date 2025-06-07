@@ -1,5 +1,6 @@
 ﻿using Biblioteka.Data;
 using Biblioteka.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteka.Controllers
 {
+    [Authorize] // Require authentication for all actions
     public class CategoriesController : Controller
     {
         private readonly LibraryContext _context;
@@ -40,6 +42,7 @@ namespace Biblioteka.Controllers
         }
 
         // GET: Categories/Create
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -48,6 +51,7 @@ namespace Biblioteka.Controllers
         // POST: Categories/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Create(Category category)
         {
             if (ModelState.IsValid)
@@ -76,6 +80,7 @@ namespace Biblioteka.Controllers
         }
 
         // GET: Categories/Edit/5
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -105,6 +110,7 @@ namespace Biblioteka.Controllers
         // POST: Categories/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Edit(int id, Category category)
         {
             if (id != category.CategoryID)
@@ -139,6 +145,7 @@ namespace Biblioteka.Controllers
         }
 
         // GET: Categories/Delete/5
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -171,6 +178,7 @@ namespace Biblioteka.Controllers
         // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try
@@ -216,7 +224,7 @@ namespace Biblioteka.Controllers
                 var category = await _context.Categories
                     .Include(c => c.BookCategories)
                     .ThenInclude(bc => bc.Book)
-                    .FirstOrDefaultAsync(c => c.CategoryID == id);
+                    .FirstOrDefaultAsync(bc => bc.CategoryID == id);
                 if (category == null)
                 {
                     _logger.LogWarning("Kategoria o ID {CategoryId} nie została znaleziona", id);

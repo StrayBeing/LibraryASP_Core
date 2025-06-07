@@ -1,5 +1,6 @@
 ﻿using Biblioteka.Data;
 using Biblioteka.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteka.Controllers
 {
+    [Authorize]
     public class BooksController : Controller
     {
         private readonly LibraryContext _context;
@@ -21,7 +23,6 @@ namespace Biblioteka.Controllers
             _logger = logger;
         }
 
-        // GET: Books
         public async Task<IActionResult> Index()
         {
             try
@@ -40,7 +41,7 @@ namespace Biblioteka.Controllers
             }
         }
 
-        // GET: Books/Create
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Create()
         {
             try
@@ -56,9 +57,9 @@ namespace Biblioteka.Controllers
             }
         }
 
-        // POST: Books/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Create(Book book, List<int> CategoryIds)
         {
             if (ModelState.IsValid)
@@ -91,7 +92,7 @@ namespace Biblioteka.Controllers
             return View(book);
         }
 
-        // GET: Books/Edit/5
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -124,9 +125,9 @@ namespace Biblioteka.Controllers
             }
         }
 
-        // POST: Books/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Edit(int id, Book book, List<int> CategoryIds)
         {
             if (id != book.BookID)
@@ -150,7 +151,6 @@ namespace Biblioteka.Controllers
 
                     _context.Entry(existingBook).CurrentValues.SetValues(book);
 
-                    // Update categories
                     existingBook.BookCategories.Clear();
                     if (CategoryIds != null && CategoryIds.Any())
                     {
@@ -176,7 +176,7 @@ namespace Biblioteka.Controllers
             return View(book);
         }
 
-        // GET: Books/Delete/5
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -206,9 +206,9 @@ namespace Biblioteka.Controllers
             }
         }
 
-        // POST: Books/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bibliotekarz,Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try
@@ -234,7 +234,6 @@ namespace Biblioteka.Controllers
             }
         }
 
-        // GET: Books/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
