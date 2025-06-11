@@ -1,0 +1,11 @@
+﻿/* Light Theme */
+.light-theme {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+/* Dark Theme */
+.dark-theme {
+    background-color: blue !important;
+    color: white !important;
+}

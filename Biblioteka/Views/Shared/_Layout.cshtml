@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="@(Context.Request.Cookies["theme"] == "dark" ? "dark" : "")">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Biblioteka ZielonaZakładka</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -20,55 +20,59 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Index">Książki</a>
+                                <a class="nav-link" asp-area="" asp-controller="Books" asp-action="Index">Książki</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Copies" asp-action="Index">Egzemplarze</a>
+                                <a class="nav-link" asp-area="" asp-controller="Copies" asp-action="Index">Egzemplarze</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Loans" asp-action="Index">Wypożyczenia</a>
+                                <a class="nav-link" asp-area="" asp-controller="Loans" asp-action="Index">Wypożyczenia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Notifications" asp-action="MyNotifications">Powiadomienia</a>
+                                <a class="nav-link" asp-area="" asp-controller="Notifications" asp-action="MyNotifications">Powiadomienia</a>
                             </li>
                             @if (User.IsInRole("Bibliotekarz") || User.IsInRole("Administrator"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Użytkownicy</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Użytkownicy</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Kategorie</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Categories" asp-action="Index">Kategorie</a>
                                 </li>
                             }
                         }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">O Stronie</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">O Stronie</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
+                        <!-- Theme Toggle Button -->
+                        <li class="nav-item">
+                            <button id="theme-toggle" class="nav-link btn btn-link">Zmień motyw</button>
+                        </li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <span class="nav-link text-dark">Witaj, @User.Identity.Name!</span>
+                                <span class="nav-link">Witaj, @User.Identity.Name!</span>
                             </li>
                             <li class="nav-item">
                                 <form asp-controller="Account" asp-action="Logout" method="post">
-                                    <button type="submit" class="nav-link btn btn-link text-dark">Wyloguj</button>
+                                    <button type="submit" class="nav-link btn btn-link">Wyloguj</button>
                                 </form>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Zaloguj</a>
+                                <a class="nav-link" asp-controller="Account" asp-action="Login">Zaloguj</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Zarejestruj</a>
+                                <a class="nav-link" asp-controller="Account" asp-action="Register">Zarejestruj</a>
                             </li>
                         }
                     </ul>
@@ -82,7 +86,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer">
         <div class="container">
             © 2025 - Biblioteka ZielonaZakładka - <a asp-area="" asp-controller="Home" asp-action="Privacy">O Stronie</a>
         </div>
@@ -91,5 +95,28 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        // Theme toggle script
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+            const htmlElement = document.documentElement;
+            const isDark = htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            // Update button text
+            this.textContent = isDark ? 'Motyw jasny' : 'Motyw ciemny';
+        });
+
+        // Apply saved theme on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme');
+            const htmlElement = document.documentElement;
+            const toggleButton = document.getElementById('theme-toggle');
+            if (savedTheme === 'dark') {
+                htmlElement.classList.add('dark');
+                toggleButton.textContent = 'Motyw jasny';
+            } else {
+                toggleButton.textContent = 'Motyw ciemny';
+            }
+        });
+    </script>
 </body>
 </html>

@@ -27,6 +27,23 @@ namespace Biblioteka.Controllers
         }
 
         [AllowAnonymous]
+        public IActionResult ToggleTheme(string returnUrl = "/")
+        {
+            var currentTheme = Request.Cookies["theme"];
+            var newTheme = currentTheme == "dark" ? "light" : "dark";
+
+            Response.Cookies.Append("theme", newTheme, new CookieOptions
+            {
+                Expires = DateTimeOffset.UtcNow.AddYears(1),
+                HttpOnly = false,
+                Secure = true,
+                SameSite = SameSiteMode.Strict
+            });
+
+            return LocalRedirect(returnUrl);
+        }
+
+        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

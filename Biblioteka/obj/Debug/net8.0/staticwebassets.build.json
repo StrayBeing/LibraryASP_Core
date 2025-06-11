@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ef86rI6D5jhLwyQCbplNCXNtkf0xPiLS1CXAnDq4mwA=",
+  "Hash": "NPelzz0fjfkNdfcb749dL+upd+hqGdRGY8SnzQs9PHA=",
   "Source": "Biblioteka",
   "BasePath": "_content/Biblioteka",
   "Mode": "Default",
@@ -73,11 +73,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "4jlle9n6m9",
+      "Integrity": "wB1QF0CgFQbrEGAFVeHS0r894fsAXtQen7TyL8S/3AU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "D:\\Testy\\ASP Powtórki\\Biblioteka\\Biblioteka\\wwwroot\\css\\themes.css",
+      "SourceId": "Biblioteka",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Testy\\ASP Powtórki\\Biblioteka\\Biblioteka\\wwwroot\\",
+      "BasePath": "_content/Biblioteka",
+      "RelativePath": "css/themes#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vqwxliqh70",
+      "Integrity": "+T69NvF3Fxrwp/Izj5jry626ASisaTmcz99PjgiEsig=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\themes.css"
     },
     {
       "Identity": "D:\\Testy\\ASP Powtórki\\Biblioteka\\Biblioteka\\wwwroot\\favicon.ico",
@@ -1485,7 +1506,7 @@
       ]
     },
     {
-      "Route": "css/site.c2tiyv64ts.css",
+      "Route": "css/site.4jlle9n6m9.css",
       "AssetFile": "D:\\Testy\\ASP Powtórki\\Biblioteka\\Biblioteka\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1495,7 +1516,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "8375"
         },
         {
           "Name": "Content-Type",
@@ -1503,11 +1524,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"wB1QF0CgFQbrEGAFVeHS0r894fsAXtQen7TyL8S/3AU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 13 May 2025 14:38:11 GMT"
+          "Value": "Wed, 11 Jun 2025 17:11:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1517,7 +1538,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
+          "Value": "4jlle9n6m9"
         },
         {
           "Name": "label",
@@ -1525,7 +1546,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-wB1QF0CgFQbrEGAFVeHS0r894fsAXtQen7TyL8S/3AU="
         }
       ]
     },
@@ -1540,7 +1561,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "8375"
         },
         {
           "Name": "Content-Type",
@@ -1548,11 +1569,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"wB1QF0CgFQbrEGAFVeHS0r894fsAXtQen7TyL8S/3AU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 13 May 2025 14:38:11 GMT"
+          "Value": "Wed, 11 Jun 2025 17:11:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1562,7 +1583,89 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-wB1QF0CgFQbrEGAFVeHS0r894fsAXtQen7TyL8S/3AU="
+        }
+      ]
+    },
+    {
+      "Route": "css/themes.css",
+      "AssetFile": "D:\\Testy\\ASP Powtórki\\Biblioteka\\Biblioteka\\wwwroot\\css\\themes.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "221"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+T69NvF3Fxrwp/Izj5jry626ASisaTmcz99PjgiEsig=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 11 Jun 2025 17:02:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+T69NvF3Fxrwp/Izj5jry626ASisaTmcz99PjgiEsig="
+        }
+      ]
+    },
+    {
+      "Route": "css/themes.vqwxliqh70.css",
+      "AssetFile": "D:\\Testy\\ASP Powtórki\\Biblioteka\\Biblioteka\\wwwroot\\css\\themes.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "221"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+T69NvF3Fxrwp/Izj5jry626ASisaTmcz99PjgiEsig=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 11 Jun 2025 17:02:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vqwxliqh70"
+        },
+        {
+          "Name": "label",
+          "Value": "css/themes.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+T69NvF3Fxrwp/Izj5jry626ASisaTmcz99PjgiEsig="
         }
       ]
     },
