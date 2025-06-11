@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\controllers\\genericapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\controllers\\genericapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\views\\copies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\views\\copies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\models\\copy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\models\\copy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\controllers\\copiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\controllers\\copiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -87,10 +103,6 @@
       "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\models\\copy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\models\\copy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -167,10 +179,6 @@
       "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\views\\users\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\controllers\\copiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\controllers\\copiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -205,10 +213,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\views\\categories\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\views\\categories\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\views\\copies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|solutionrelative:biblioteka\\views\\copies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{92906B12-EA05-4A80-AE89-B30296641227}|Biblioteka\\Biblioteka.csproj|d:\\testy\\asp powt\u00F3rki\\biblioteka\\biblioteka\\views\\copies\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -270,7 +274,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -278,45 +282,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoanDueNotificationService.cs",
-              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Services\\LoanDueNotificationService.cs",
-              "RelativeDocumentMoniker": "Biblioteka\\Services\\LoanDueNotificationService.cs",
-              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Services\\LoanDueNotificationService.cs",
-              "RelativeToolTip": "Biblioteka\\Services\\LoanDueNotificationService.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAcwFcAAAABAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "GenericApiController.cs",
+              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\GenericApiController.cs",
+              "RelativeDocumentMoniker": "Biblioteka\\Controllers\\GenericApiController.cs",
+              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\GenericApiController.cs",
+              "RelativeToolTip": "Biblioteka\\Controllers\\GenericApiController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwA8AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T17:19:14.702Z",
+              "WhenOpened": "2025-06-11T17:33:13.284Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Notification.cs",
-              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Notification.cs",
-              "RelativeDocumentMoniker": "Biblioteka\\Models\\Notification.cs",
-              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Notification.cs",
-              "RelativeToolTip": "Biblioteka\\Models\\Notification.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAA9wBMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T15:34:54.588Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Program.cs",
-              "RelativeDocumentMoniker": "Biblioteka\\Program.cs",
-              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Program.cs",
-              "RelativeToolTip": "Biblioteka\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T14:38:36.48Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "NotificationsController.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\NotificationsController.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Controllers\\NotificationsController.cs",
@@ -328,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "MyNotifications.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Notifications\\MyNotifications.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Notifications\\MyNotifications.cshtml",
@@ -336,25 +315,99 @@
               "RelativeToolTip": "Biblioteka\\Views\\Notifications\\MyNotifications.cshtml",
               "ViewState": "AgIAACEAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-07T16:39:27.544Z",
+              "WhenOpened": "2025-06-07T16:39:27.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CopiesController.cs",
+              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\CopiesController.cs",
+              "RelativeDocumentMoniker": "Biblioteka\\Controllers\\CopiesController.cs",
+              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\CopiesController.cs",
+              "RelativeToolTip": "Biblioteka\\Controllers\\CopiesController.cs",
+              "ViewState": "AgIAAD8BAAAAAAAAAAAcwFMBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T15:40:34.103Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "Copy.cs",
+              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Copy.cs",
+              "RelativeDocumentMoniker": "Biblioteka\\Models\\Copy.cs",
+              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Copy.cs",
+              "RelativeToolTip": "Biblioteka\\Models\\Copy.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAowBUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T15:34:19.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Copies\\Index.cshtml",
+              "RelativeDocumentMoniker": "Biblioteka\\Views\\Copies\\Index.cshtml",
+              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Copies\\Index.cshtml",
+              "RelativeToolTip": "Biblioteka\\Views\\Copies\\Index.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAcwDgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-18T14:33:30.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Program.cs",
+              "RelativeDocumentMoniker": "Biblioteka\\Program.cs",
+              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Program.cs",
+              "RelativeToolTip": "Biblioteka\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T14:38:36.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "Biblioteka\\Models\\Notification.cs",
+              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Notification.cs",
+              "RelativeToolTip": "Biblioteka\\Models\\Notification.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA9wBMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T15:34:54.588Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoanDueNotificationService.cs",
+              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Services\\LoanDueNotificationService.cs",
+              "RelativeDocumentMoniker": "Biblioteka\\Services\\LoanDueNotificationService.cs",
+              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Services\\LoanDueNotificationService.cs",
+              "RelativeToolTip": "Biblioteka\\Services\\LoanDueNotificationService.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAcwFcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T17:19:14.702Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "BooksController.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\BooksController.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Controllers\\BooksController.cs",
               "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\BooksController.cs",
               "RelativeToolTip": "Biblioteka\\Controllers\\BooksController.cs",
-              "ViewState": "AgIAAHQBAAAAAAAAAAAcwIYBAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADMBAAAAAAAAAAAcwEUBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-13T15:00:27.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "Loan.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Loan.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Models\\Loan.cs",
@@ -366,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "LibraryContext.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Data\\LibraryContext.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Data\\LibraryContext.cs",
@@ -378,7 +431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Controllers\\UserController.cs",
@@ -390,7 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "Book.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Book.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Models\\Book.cs",
@@ -402,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Notifications\\Index.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Notifications\\Index.cshtml",
@@ -414,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Controllers\\AccountController.cs",
@@ -426,7 +479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Controllers\\HomeController.cs",
@@ -438,7 +491,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "site.css",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "Biblioteka\\wwwroot\\css\\site.css",
@@ -450,7 +503,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Books\\Create.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Books\\Create.cshtml",
@@ -462,7 +515,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Books\\Delete.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Books\\Delete.cshtml",
@@ -474,7 +527,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Books\\Details.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Books\\Details.cshtml",
@@ -486,7 +539,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Books\\Edit.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Books\\Edit.cshtml",
@@ -498,7 +551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Home\\Index.cshtml",
@@ -510,7 +563,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Books\\Index.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Books\\Index.cshtml",
@@ -522,7 +575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Shared\\_Layout.cshtml",
@@ -534,19 +587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Copy.cs",
-              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Copy.cs",
-              "RelativeDocumentMoniker": "Biblioteka\\Models\\Copy.cs",
-              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Copy.cs",
-              "RelativeToolTip": "Biblioteka\\Models\\Copy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAiwBUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T15:34:19.916Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "Category.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\Category.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Models\\Category.cs",
@@ -558,7 +599,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "BookSearchViewModel.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\BookSearchViewModel.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Models\\BookSearchViewModel.cs",
@@ -570,7 +611,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "LoansController.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\LoansController.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Controllers\\LoansController.cs",
@@ -582,7 +623,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Models\\ErrorViewModel.cs",
@@ -594,7 +635,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "RoleStore.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Services\\RoleStore.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Services\\RoleStore.cs",
@@ -606,7 +647,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "CustomUserStore.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Services\\CustomUserStore.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Services\\CustomUserStore.cs",
@@ -618,7 +659,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\User.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Models\\User.cs",
@@ -630,7 +671,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "RegisterModelView.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\RegisterModelView.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Models\\RegisterModelView.cs",
@@ -642,7 +683,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\_ViewStart.cshtml",
@@ -654,7 +695,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\_ViewImports.cshtml",
@@ -666,7 +707,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "LoginViewModel.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Models\\LoginViewModel.cs",
@@ -678,7 +719,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Loans\\Index.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Loans\\Index.cshtml",
@@ -690,7 +731,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Loans\\Create.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Loans\\Create.cshtml",
@@ -702,7 +743,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 38,
               "Title": "BookCategory.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Models\\BookCategory.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Models\\BookCategory.cs",
@@ -714,7 +755,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 39,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Loans\\Delete.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Loans\\Delete.cshtml",
@@ -726,7 +767,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 42,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Users\\Delete.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Users\\Delete.cshtml",
@@ -738,7 +779,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 43,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Users\\Details.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Users\\Details.cshtml",
@@ -750,7 +791,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 41,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Users\\Create.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Users\\Create.cshtml",
@@ -762,7 +803,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 40,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Users\\Edit.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Users\\Edit.cshtml",
@@ -774,19 +815,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "CopiesController.cs",
-              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\CopiesController.cs",
-              "RelativeDocumentMoniker": "Biblioteka\\Controllers\\CopiesController.cs",
-              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\CopiesController.cs",
-              "RelativeToolTip": "Biblioteka\\Controllers\\CopiesController.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAwwEsBAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T15:40:34.103Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "Biblioteka\\Controllers\\CategoriesController.cs",
@@ -798,7 +827,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Home\\Privacy.cshtml",
@@ -810,7 +839,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 49,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Notifications\\Create.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Notifications\\Create.cshtml",
@@ -822,7 +851,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 48,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Notifications\\Edit.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Notifications\\Edit.cshtml",
@@ -834,7 +863,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 47,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Notifications\\Delete.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Notifications\\Delete.cshtml",
@@ -846,7 +875,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 46,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Notifications\\Details.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Notifications\\Details.cshtml",
@@ -858,7 +887,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 50,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Loans\\Edit.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Loans\\Edit.cshtml",
@@ -870,7 +899,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 51,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Loans\\Details.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Loans\\Details.cshtml",
@@ -882,7 +911,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 52,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Categories\\Create.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Categories\\Create.cshtml",
@@ -894,19 +923,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Copies\\Index.cshtml",
-              "RelativeDocumentMoniker": "Biblioteka\\Views\\Copies\\Index.cshtml",
-              "ToolTip": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Copies\\Index.cshtml",
-              "RelativeToolTip": "Biblioteka\\Views\\Copies\\Index.cshtml",
-              "ViewState": "AgIAACgAAAAAAAAAAAAuwDgAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-18T14:33:30.963Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Copies\\Create.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Copies\\Create.cshtml",
@@ -918,7 +935,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Copies\\Details.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Copies\\Details.cshtml",
@@ -930,7 +947,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Copies\\Delete.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Copies\\Delete.cshtml",
@@ -942,7 +959,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Copies\\Edit.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Copies\\Edit.cshtml",
@@ -954,7 +971,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Categories\\Details.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Categories\\Details.cshtml",
@@ -966,7 +983,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Categories\\Delete.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Categories\\Delete.cshtml",
@@ -978,7 +995,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Categories\\Edit.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Categories\\Edit.cshtml",
@@ -990,7 +1007,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 60,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Categories\\Index.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Categories\\Index.cshtml",
@@ -1002,7 +1019,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 61,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Users\\Index.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Users\\Index.cshtml",
@@ -1014,7 +1031,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 63,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -1026,7 +1043,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 62,
               "Title": "Error.cshtml",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\Views\\Shared\\Error.cshtml",
               "RelativeDocumentMoniker": "Biblioteka\\Views\\Shared\\Error.cshtml",
@@ -1038,7 +1055,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 64,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\appsettings.json",
               "RelativeDocumentMoniker": "Biblioteka\\appsettings.json",
@@ -1050,7 +1067,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 65,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "D:\\Testy\\ASP Powt\u00F3rki\\Biblioteka\\Biblioteka\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Biblioteka\\appsettings.Development.json",
