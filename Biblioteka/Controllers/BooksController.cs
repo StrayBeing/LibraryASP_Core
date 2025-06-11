@@ -14,28 +14,67 @@ namespace Biblioteka.Controllers
     [Authorize]
     public class BooksController : Controller
     {
-        private readonly LibraryContext _context;
-        private readonly ILogger<BooksController> _logger;
+        private readonly LibraryContext _context; private readonly ILogger _logger;
 
         public BooksController(LibraryContext context, ILogger<BooksController> logger)
         {
-            _context = context;
-            _logger = logger;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(BookSearchViewModel searchModel = null)
         {
             try
             {
-                var books = await _context.Books
+                searchModel = searchModel ?? new BookSearchViewModel();
+                searchModel.AvailableCategories = await _context.Categories.ToListAsync();
+
+                var query = _context.Books
                     .Include(b => b.BookCategories)
                     .ThenInclude(bc => bc.Category)
-                    .ToListAsync();
+                    .AsQueryable();
+
+                if (!string.IsNullOrWhiteSpace(searchModel.Title))
+                {
+                    string searchTitle = searchModel.Title.ToLower();
+                    query = query.Where(b => b.Title.ToLower().Contains(searchTitle));
+                }
+
+                if (!string.IsNullOrWhiteSpace(searchModel.Author))
+                {
+                    string searchAuthor = searchModel.Author.ToLower();
+                    query = query.Where(b => b.Author.ToLower().Contains(searchAuthor));
+                }
+
+                if (!string.IsNullOrWhiteSpace(searchModel.ISBN))
+                {
+                    string searchISBN = searchModel.ISBN.ToLower();
+                    query = query.Where(b => b.ISBN.ToLower().Contains(searchISBN));
+                }
+
+                if (searchModel.YearFrom.HasValue)
+                {
+                    query = query.Where(b => b.YearPublished >= searchModel.YearFrom.Value);
+                }
+
+                if (searchModel.YearTo.HasValue)
+                {
+                    query = query.Where(b => b.YearPublished <= searchModel.YearTo.Value);
+                }
+
+                if (searchModel.CategoryIds != null && searchModel.CategoryIds.Any())
+                {
+                    query = query.Where(b => b.BookCategories.Any(bc => searchModel.CategoryIds.Contains(bc.CategoryID)));
+                }
+
+                var books = await query.ToListAsync();
+                ViewBag.SearchModel = searchModel;
+
                 return View(books);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error retrieving books list");
+                _logger.LogError(ex, "Error retrieving books list with search filters");
                 TempData["Error"] = "Wystąpił błąd podczas pobierania listy książek.";
                 return View(new List<Book>());
             }
@@ -47,7 +86,7 @@ namespace Biblioteka.Controllers
             try
             {
                 ViewBag.Categories = await _context.Categories.ToListAsync();
-                return View();
+                return View(new Book());
             }
             catch (Exception ex)
             {
@@ -88,6 +127,7 @@ namespace Biblioteka.Controllers
                     TempData["Error"] = "Wystąpił błąd podczas dodawania książki.";
                 }
             }
+
             ViewBag.Categories = await _context.Categories.ToListAsync();
             return View(book);
         }
@@ -107,6 +147,7 @@ namespace Biblioteka.Controllers
                     .Include(b => b.BookCategories)
                     .ThenInclude(bc => bc.Category)
                     .FirstOrDefaultAsync(b => b.BookID == id);
+
                 if (book == null)
                 {
                     _logger.LogWarning("Book with ID {BookId} not found", id);
@@ -143,6 +184,7 @@ namespace Biblioteka.Controllers
                     var existingBook = await _context.Books
                         .Include(b => b.BookCategories)
                         .FirstOrDefaultAsync(b => b.BookID == id);
+
                     if (existingBook == null)
                     {
                         _logger.LogWarning("Book with ID {BookId} not found", id);
@@ -171,6 +213,7 @@ namespace Biblioteka.Controllers
                     TempData["Error"] = "Wystąpił błąd podczas aktualizacji książki.";
                 }
             }
+
             ViewBag.Categories = await _context.Categories.ToListAsync();
             ViewBag.SelectedCategoryIds = CategoryIds ?? new List<int>();
             return View(book);
@@ -191,11 +234,13 @@ namespace Biblioteka.Controllers
                     .Include(b => b.BookCategories)
                     .ThenInclude(bc => bc.Category)
                     .FirstOrDefaultAsync(b => b.BookID == id);
+
                 if (book == null)
                 {
                     _logger.LogWarning("Book with ID {BookId} not found", id);
                     return NotFound();
                 }
+
                 return View(book);
             }
             catch (Exception ex)
@@ -213,11 +258,22 @@ namespace Biblioteka.Controllers
         {
             try
             {
-                var book = await _context.Books.FindAsync(id);
+                var book = await _context.Books
+                    .Include(b => b.BookCategories)
+                    .Include(b => b.Copies)
+                    .FirstOrDefaultAsync(b => b.BookID == id);
+
                 if (book == null)
                 {
                     _logger.LogWarning("Book with ID {BookId} not found", id);
                     return NotFound();
+                }
+
+                if (book.Copies.Any())
+                {
+                    _logger.LogWarning("Cannot delete book with ID {BookId} because it has associated copies", id);
+                    TempData["Error"] = "Nie można usunąć książki, ponieważ ma powiązane egzemplarze.";
+                    return RedirectToAction(nameof(Index));
                 }
 
                 _context.Books.Remove(book);
@@ -247,12 +303,15 @@ namespace Biblioteka.Controllers
                 var book = await _context.Books
                     .Include(b => b.BookCategories)
                     .ThenInclude(bc => bc.Category)
+                    .Include(b => b.Copies)
                     .FirstOrDefaultAsync(b => b.BookID == id);
+
                 if (book == null)
                 {
                     _logger.LogWarning("Book with ID {BookId} not found", id);
                     return NotFound();
                 }
+
                 return View(book);
             }
             catch (Exception ex)
@@ -263,4 +322,5 @@ namespace Biblioteka.Controllers
             }
         }
     }
+
 }

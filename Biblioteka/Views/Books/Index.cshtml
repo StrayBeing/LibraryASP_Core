@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<Biblioteka.Models.Book>
-
+@using Biblioteka.Models
 @{
     ViewData["Title"] = "Lista książek";
+    var searchModel = ViewBag.SearchModel as BookSearchViewModel ?? new BookSearchViewModel();
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -14,6 +15,48 @@
 {
     <div class="alert alert-success" role="alert">@TempData["Success"]</div>
 }
+
+<div class="card mb-3">
+    <div class="card-header">
+        Wyszukiwanie książek
+    </div>
+    <div class="card-body">
+        <form asp-action="Index" method="get">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label asp-for="@searchModel.Title" class="form-label"></label>
+                    <input asp-for="@searchModel.Title" class="form-control" placeholder="Wpisz tytuł" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="@searchModel.Author" class="form-label"></label>
+                    <input asp-for="@searchModel.Author" class="form-control" placeholder="Wpisz autora" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="@searchModel.ISBN" class="form-label"></label>
+                    <input asp-for="@searchModel.ISBN" class="form-control" placeholder="Wpisz ISBN" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="@searchModel.YearFrom" class="form-label"></label>
+                    <input asp-for="@searchModel.YearFrom" class="form-control" type="number" placeholder="Od roku" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="@searchModel.YearTo" class="form-label"></label>
+                    <input asp-for="@searchModel.YearTo" class="form-control" type="number" placeholder="Do roku" />
+                </div>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@searchModel.CategoryIds" class="form-label">Kategorie</label>
+                <select asp-for="@searchModel.CategoryIds" asp-items="@(new MultiSelectList(searchModel.AvailableCategories, "CategoryID", "Name"))" class="form-control" multiple></select>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Szukaj</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Wyczyść filtry</a>
+            </div>
+        </form>
+    </div>
+</div>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Dodaj nową książkę</a>
@@ -51,4 +94,14 @@
 
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $('select[multiple]').select2({
+                placeholder: "Wybierz kategorie",
+                allowClear: true
+            });
+        });
+    </script>
 }
