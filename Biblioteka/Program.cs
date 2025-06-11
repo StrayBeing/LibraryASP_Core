@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Dodaj TimeProvider
 builder.Services.AddSingleton(TimeProvider.System);
+builder.Services.AddHostedService<LoanDueNotificationService>();
 
 // Dodaj uwierzytelnianie z ciasteczkami
 builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
